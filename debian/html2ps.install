@@ -1,0 +1,2 @@
+html2ps usr/bin/
+debian/config/html2psrc etc/

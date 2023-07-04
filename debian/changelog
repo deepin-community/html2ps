@@ -1,5 +1,315 @@
-template-repository (1.0-1) unstable; urgency=medium
+html2ps (1.0b7-6) unstable; urgency=medium
 
-  * Initial release
+  * QA upload.
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+  [ Debian Janitor ]
+  * debian/copyright: use spaces rather than tabs to start continuation lines.
+  * Set Homepage field in Source rather than Binary package.
+  * Fix day-of-week for changelog entry 1.0b4-1.
+
+ -- Jelmer Vernooĳ <jelmer@debian.org>  Fri, 27 May 2022 20:13:48 +0100
+
+html2ps (1.0b7-5) unstable; urgency=medium
+
+  * QA upload.
+  * debian/control:
+    + Add Vcs-* fields to use git packaging repo on Debian Salsa GitLab.
+    + Bump Standards-Version to 4.6.0.
+    + Migrate from cdbs to dh buildsystem.
+  * debian/*.menu: Dropped per tech-ctte's decision.
+  * debian/rules: migrate to dh sequencer.
+  * debian/changelog: Remove trailing spaces.
+  * debian/copyright: Use machine-readable copyright format.
+
+ -- Boyuan Yang <byang@debian.org>  Fri, 17 Sep 2021 22:57:23 -0400
+
+html2ps (1.0b7-4) unstable; urgency=medium
+
+  * QA upload.
+  * Update suggestion from mime-support to mailcap to reflect recent
+    package split from mime-support to mailcap and media-types.
+
+ -- Boyuan Yang <byang@debian.org>  Sat, 30 Jan 2021 13:39:14 -0500
+
+html2ps (1.0b7-3) unstable; urgency=medium
+
+  * QA upload.
+  * Update the xhtml2ps dependency from "tk8.3 | wish" to tk.
+
+ -- Adrian Bunk <bunk@debian.org>  Sun, 12 Aug 2018 21:15:58 +0300
+
+html2ps (1.0b7-2) unstable; urgency=medium
+
+  * QA upload.
+  * Set maintainer to 'Debian QA Group <packages@qa.debian.org>'.
+    Cf. #759016
+  * Fix "relies on deprecated Perl syntax/features, breaks with 5.26" and
+    "Use of assignment to $[ is deprecated":
+    add patch perl-deprecations.patch
+    (Closes: #866317, #740782)
+
+ -- gregor herrmann <gregoa@debian.org>  Mon, 17 Jul 2017 20:18:56 +0200
+
+html2ps (1.0b7-1) unstable; urgency=low
+
+  * New maintainer. (Closes: #407652)
+  * New upstream release. (Closes: #548633)
+  * debian/control:
+    - Recommends set to ghostscript instead of gs-gpl. (Closes: #539670)
+    - Homepage set to new upstream site. (Closes: #524874)
+    - Build-Depends updated to include cdbs and new debhelper
+    - Added ${misc:Depends} dependency
+  * Added xhtml2ps.desktop entry.
+  * debian/copyright now follows "DEP-5: Machine-readable debian/copyright"
+    specification.
+  * Upgraded the package to format 3.0 (quilt).
+  * Added a patch to make html2ps warn if HTML check fails.
+  * Added upstream changelog.
+  * Split patches on html2ps into several patches. Each one tracked down to
+    its creator and annotated with the appropriate update time.
+  * Moved ghostscript from Recommends to Suggests.
+  * Added justification for suggested packages in Description.
+  * Bumped policy to 3.9.2.
+
+ -- Rafael Cunha de Almeida <rafael@kontesti.me>  Sun, 14 Aug 2011 15:42:54 -0300
+
+html2ps (1.0b5-5) unstable; urgency=low
+
+  * QA upload.
+  * Fixed several missing variable escapes, and a spurious paper setting
+    in debian/config/html2psrc. Thanks to Trent Buck for the patch!
+    (closes: #421385).
+  * Allow option "--DSC" as alias for "-D" (closes: #446773).
+  * Set the default postscript viewer in xhtml2ps to "see". Add Suggests:
+    mime-support. Thanks to Matej Vela for the idea! (closes: #72034).
+  * debian/config/html2psrc:
+    - removed /usr/X11R6/bin from path setting as we do not use /usr/X11R6
+      any longer
+    - hyphenation table: use file location from texlive
+  * Changed menu section from Apps to Applications.
+  * debian/control:
+    - use Homepage field for upstream homepage
+    - removed useless dependency on ${misc:Depends}
+    - switched from tetex-base to texlive-base (in Suggests)
+  * Manage patches with dpatch
+
+ -- Ralf Treinen <treinen@debian.org>  Sat, 20 Oct 2007 22:16:32 +0200
+
+html2ps (1.0b5-4) unstable; urgency=low
+
+  * QA upload.
+  * html2ps: Applied patch from Trent Buck <trentbuck@gmail.com> to respect
+    PAPERSIZE environment variable (Closes: #410011).
+
+ -- Daniel Baumann <daniel@debian.org>  Thu,  8 Feb 2007 08:56:00 +0100
+
+html2ps (1.0b5-3) unstable; urgency=low
+
+  * Orphaning package.
+
+ -- Daniel Baumann <daniel@debian.org>  Sat, 20 Jan 2007 12:00:00 +0100
+
+html2ps (1.0b5-2) unstable; urgency=low
+
+  * New maintainer (Closes: #360940).
+  * Redone debian directory based on current debhelper templates, additionally:
+    - added menu file.
+
+ -- Daniel Baumann <daniel@debian.org>  Mon,  6 Nov 2006 21:37:00 +0100
+
+html2ps (1.0b5-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Florian Ernst <florian@debian.org>  Mon, 19 Dec 2005 21:19:37 +0100
+
+html2ps (1.0b4-4) unstable; urgency=low
+
+  * Split out a separate xhtml2ps package as a first step for evaluating
+    whether this contributed frontend is still in use, and to be able to
+    use html2ps without installing Tcl/Tk
+  * Upgrade debhelper compatibility level
+
+ -- Florian Ernst <florian@debian.org>  Mon,  5 Dec 2005 17:48:53 +0100
+
+html2ps (1.0b4-3) unstable; urgency=low
+
+  * Back out patch for URL handling introduced in 1.0b3-5 as it breaks
+    cross-referencing / links within a document (Closes: #320913, #335701),
+    thus effectively "reopening" #222640
+  * Suggests: on virtual packages postscript-viewer and lpr, partially fixing
+    xhtml2ps to use those (see: #72034), explaining the story in README.Debian;
+    also changing Recommends on gs to gs-gpl
+
+ -- Florian Ernst <florian@debian.org>  Sun, 30 Oct 2005 11:26:13 +0100
+
+html2ps (1.0b4-2) unstable; urgency=low
+
+  * New maintainer, many thanks to Nigel Jones for his work (Closes: #327440),
+    Matt Currington as co-maintainer isn't active anymore, too
+  * Back out some small patches that aren't needed anymore
+  * Replace a latin1 char in html2psrc.5
+  * debian/changelog: remove old closes format at 1.0b1-3
+  * debian/control:
+    + move debhelper to Build-Depends as it is needed for the clean target
+    + add upstream Homepage to long description
+  * debian/copyright:
+    + list past and present maintainer(s)
+    + elaborate copyright notice and authors
+  * debian/rules:
+    + export compat, docs, examples and manpages to files in debian/
+    + drop debian/html2psrc from examples as it doesn't provide anything new
+    + general cleanup, stripping out all unneeded parts
+  * debian/xhtml2ps.1x: linking via debian/links instead
+  * don't convert the html doc to ps anymore
+
+ -- Florian Ernst <florian@debian.org>  Thu, 22 Sep 2005 19:07:46 +0200
+
+html2ps (1.0b4-1) unstable; urgency=low
+
+  * New upstream release
+  * Patched debian/rules
+  * New Standards Version
+  * New Co-Maintainer
+
+ -- Nigel Jones <nigelj@gmail.com>  Sat, 18 Jun 2005 14:34:36 +1200
+
+html2ps (1.0b3-6) unstable; urgency=medium
+
+  * Found upstream patch hopefully fixing a few bugs.
+  * Renamed --DSC to --dsc (closes: #76569, #176012)
+
+ -- Nigel Jones <nigelj@gmail.com>  Sun, 29 May 2005 15:53:23 +1200
+
+html2ps (1.0b3-5) unstable; urgency=low
+
+  * New Maintainer (closes: #279769)
+  * Patched URL Handing (closes: #222640)
+
+ -- Nigel Jones <nigelj@gmail.com>  Thu, 26 May 2005 16:10:30 +1200
+
+html2ps (1.0b3-4) unstable; urgency=low
+
+  * QA Group upload orphaning this package
+  * debian/control: Depend on weblint-perl instead of weblint (closes:
+    #271377)
+  * Incorporates previous NMUs (closes: #185479, #193692)
+  * debian/control: add dependency on tk8.3 or'ed with wish
+  * debian/copyright: corrected spelling mistake
+
+ -- Andrew Pollock <apollock@debian.org>  Sun, 27 Feb 2005 09:14:07 +1100
+
+html2ps (1.0b3-3.1) unstable; urgency=low
+
+  * NMU.
+  * Improve handling -W and special characters in document. (Closes: #185479)
+  * Improve handling large EPS images. (Closes: #193692)
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sat, 23 Aug 2003 19:11:20 +0200
+
+html2ps (1.0b3-3) unstable; urgency=low
+
+  * Add support to the default paper size specified by the libpaper
+    package (thanks to Matej Cepl <matej@ceplovi.cz> for the suggestion,
+    although I didn't use his proposed fix),
+  Closes: #26945
+  * Fix mis-protected open call that caused html2ps to crash,
+  Closes: #168805
+
+ -- Stephen Zander <gibreel@debian.org>  Tue, 19 Nov 2002 01:29:07 -0800
+
+html2ps (1.0b3-2) unstable; urgency=high
+
+  * Applied security patch from Sebastian Krahmer of SuSE to stop html2ps
+    execute arbitrary code when parsing a HTML file
+  * Close miscellaneous bugs already addressed by previous releases:
+  	* support for perl5.00503
+  	* page generation request
+  	* imagemagic depndency (html2ps depends on perlmagick)
+  Closes: #42105, #51667, #71765
+  * Support http_proxy environment variable,
+  Closes: #51666
+  * Review package depndencies to reduce overall package foot print,
+    specifically change 'Depends: tetex-base' to 'Suggests: tetex-base',
+  Closes: #105226
+  * Add Build-Depends-Indep for debhelper,
+  Closes: #139194
+
+ -- Stephen Zander <gibreel@debian.org>  Sun,  3 Nov 2002 11:18:09 -0800
+
+html2ps (1.0b3-1) unstable; urgency=low
+
+  * New upstream version.
+  * Now correctly render tables, Closes: #22633
+  * Fixed incorrect spereation of <head> & <body> sections & included
+    <head> section in temporary file used for syntax checking,
+    Closes: #26944
+  * Now correctly renders <hr align="center">, Closes: #30711
+  * Now correectly display the man page under xhtml2ps, Closes: #33357
+  * Now supports perl 5.005, Closes: #42004, #58889
+  * Now correctly generates DSC postript using perl5.005,
+    Closes: #45596, #46275, #71447
+  * Reinforced the dependency on perlmagick, Closes: #50297
+  * Now handles non-alphanumeric characters in URLs correctly, Closes: #63691
+
+ -- Stephen Zander <gibreel@debian.org>  Thu, 14 Sep 2000 21:51:01 -0700
+
+html2ps (1.0b1-8) unstable; urgency=low
+
+  * New maintainer.
+
+ -- Stephen Zander <gibreel@debian.org>  Wed, 18 Aug 1999 23:10:58 -0700
+
+html2ps (1.0b1-7.1) unstable; urgency=low
+
+  * NMU for the perl upgrade. Closes: #41485
+  * Corrected the perl dependency.
+  * Upgraded standards-version to 2.5.1.
+  * Changed the way html2ps is launched. Now it's #!/usr/bin/perl,
+    the shell tricks has been removed. Closes: #37614, #39076
+
+ -- Raphael Hertzog <rhertzog@hrnet.fr>  Sat, 24 Jul 1999 01:13:45 +0200
+
+html2ps (1.0b1-7) unstable; urgency=low
+
+  * Fixed location of ushyph1.tex for potato, closes: #36895.
+
+ -- Johnie Ingram <johnie@debian.org>  Thu, 29 Apr 1999 12:20:02 -0400
+
+html2ps (1.0b1-6) frozen unstable; urgency=low
+
+  * Fixed critical bug #31824 (html2ps: can't execute).
+
+ -- Johnie Ingram <johnie@debian.org>  Fri, 22 Jan 1999 12:30:27 -0500
+
+html2ps (1.0b1-5) frozen unstable; urgency=low
+
+  * Added dependency on libhtml-parser-perl, which was apparently split
+    from libwww-perl (#28492).
+  * Correct debian/rules target (binary-indep) used.
+
+ -- Johnie Ingram <johnie@debian.org>  Mon, 21 Dec 1998 15:11:23 -0500
+
+html2ps (1.0b1-4) unstable; urgency=low
+
+  * Cleaned up debian diff to make package easier to take over.
+
+ -- Johnie Ingram <johnie@debian.org>  Mon, 29 Jun 1998 15:22:44 -0400
+
+html2ps (1.0b1-3) unstable; urgency=low
+
+  * Added dependency on perlmagick (#22835).
+
+ -- Johnie Ingram <johnie@debian.org>  Mon, 15 Jun 1998 18:41:37 -0400
+
+html2ps (1.0b1-2) unstable; urgency=low
+
+  * Released to the correct distribution.  ;-)
+
+ -- Johnie Ingram <johnie@debian.org>  Sat, 16 May 1998 06:32:15 -0400
+
+html2ps (1.0b1-1) contrib; urgency=low
+
+  * Initial Release.
+
+ -- Johnie Ingram <johnie@debian.org>  Fri, 15 May 1998 18:32:33 -0400
