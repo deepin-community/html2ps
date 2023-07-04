@@ -1,0 +1,4 @@
+# Watch control file for uscan
+
+version=3
+http://user.it.uu.se/~jan/html2ps-(.*)\.tar\.gz

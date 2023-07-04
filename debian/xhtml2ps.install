@@ -1,0 +1,2 @@
+contrib/xhtml2ps/xhtml2ps usr/bin/
+debian/xhtml2ps.desktop usr/share/applications/

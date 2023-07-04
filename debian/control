@@ -1,15 +1,67 @@
-Source: template-repository
-Section: unknown
+Source: html2ps
+Section: text
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Debian QA Group <packages@qa.debian.org>
+Build-Depends: debhelper-compat (= 13),
+Vcs-Git: https://salsa.debian.org/debian/html2ps.git
+Vcs-Browser: https://salsa.debian.org/debian/html2ps
+Standards-Version: 4.6.0
+Homepage: http://user.it.uu.se/~jan/html2ps.html
 
-Package: template-repository
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Package: html2ps
+Architecture: all
+Depends: ${misc:Depends}, ${perl:Depends}, perlmagick, libwww-perl,
+ libhtml-parser-perl, libpaper-utils
+Suggests: ghostscript, weblint-perl, texlive-base, postscript-viewer, xhtml2ps
+Description: HTML to PostScript converter
+ This program converts HTML directly to PostScript. The HTML code can be
+ retrieved from one or more URLs or local files, specified as parameters
+ on the command line. A comprehensive level of HTML is supported,
+ including inline images, CSS 1.0, and some features of HTML 4.0.
+ .
+ This is our justification for the suggests list:
+ .
+ We suggest ghostscript since it is required in order to output DSC
+ compliant PS (--dsc option) and make cross references at links within
+ the set of converted documents (--xref option).
+ .
+ We suggest weblint-perl because it's the default method for checking
+ HTML syntax (use the -c option).
+ .
+ We suggest texlive-base because we need TeX hyphenation pattern in
+ order to hyphenate text (use -H option).
+ .
+ We suggest postscript-viewer because this package generates postscripts
+ that can be viewed on a postscript-viewer.
+ .
+ We suggest xhtml2ps because it's a interesting graphical interface for
+ this package.
+
+Package: xhtml2ps
+Architecture: all
+Depends: ${misc:Depends}, html2ps (= ${binary:Version}), tk
+Suggests: weblint-perl, mailcap, postscript-viewer, lpr
+Enhances: html2ps
+Description: HTML to PostScript converter (Tcl/Tk GUI frontend)
+ This program converts HTML directly to PostScript. The HTML code can be
+ retrieved from one or more URLs or local files, specified as parameters
+ on the command line. A comprehensive level of HTML is supported,
+ including inline images, CSS 1.0, and some features of HTML 4.0.
+ .
+ This package provides an (outdated) GUI frontend to the html2ps
+ converter.
+ .
+ This is our justification for the suggests list:
+ .
+ We suggest weblint-perl because it is the default method for checking
+ HTML syntax (see Operations | Preferences).
+ .
+ We suggest lpr because it is the default printing command (see
+ Operations | Preferences).
+ .
+ We suggest mailcap because see is the default command used to open
+ the postscript viewer (see Operations | Preferences).
+ .
+ We suggest postscript-viewer because this package generates postscripts
+ which can be viewed with postscript-viewer (see Operations |
+ Preferences).

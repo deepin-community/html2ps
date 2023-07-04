@@ -1,0 +1,7 @@
+html2ps (1.0b4-4) unstable; urgency=low
+
+  * As of this version, the html2ps package doesn't include the contributed
+    xhtml2ps GUI frontend anymore. Please install the new xhtml2ps package if
+    you need it.
+
+ -- Florian Ernst <florian@debian.org>  Mon,  5 Dec 2005 17:47:13 +0100
